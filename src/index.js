@@ -4,6 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// test Database
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+
+// const app = express();
+// const port = 27017;
+
+// app.use(cors());
+// app.use(express.json());
+// mongoose.connect("mongodb+srv://jojo1914:SI8Qs9lcHRyETksD@cluster0.wutwyae.mongodb.net/")
+
+// test Database
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
