@@ -24,6 +24,10 @@ export const Transactions = () => {
         // Redirection vers la page signIn après la soumission
         // window.location.href = '/signIn';
     };
+    const handleCancel = (event) => {
+        event.preventDefault();
+        setIsVisible(true);
+    };
 
     return (
         <main className='main bg-light'>
@@ -49,7 +53,7 @@ export const Transactions = () => {
 
                 <div className='buttons'>
                     <button onClick={handleSubmit}>Save</button>
-                    <button onClick={handleClick}>Cancel</button>
+                    <button onClick={handleCancel} className={isVisible ? 'edit-input-hided' : 'edit-input'}>Cancel</button>
                 </div>
 
             </form>

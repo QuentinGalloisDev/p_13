@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { store } from './test_redux_toolkit/store'
+import { Provider } from 'react-redux'
 // test Database
 // const express = require('express');
 // const mongoose = require('mongoose');
@@ -21,7 +22,10 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+
   </React.StrictMode>
 );
 

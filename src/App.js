@@ -12,26 +12,14 @@ import {
 } from "react-router-dom"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-
+import { Counter } from './test_redux_toolkit/Counter';
+// http://127.0.0.1:3001/api/v1/user/login'
 function App() {
-
-  const [user, setUser] = useState([]);
-  useEffect(() => {
-    axios.get('http://127.0.0.1:3001/')
-      .then(response => {
-        setUser(response);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the articles!", error);
-      });
-  }, []);
-  // console.log(user)
-
   return (
     <div className="App">
       <Router>
         <Banner />
+        <Counter />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path="/signIn" element={<SignIn />} />
