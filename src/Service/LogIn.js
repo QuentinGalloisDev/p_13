@@ -23,7 +23,7 @@ export const postDataForSignIn = async (username, password) => {
 
         });
         console.log('Data posted successfully:', response.data.body.token);
-        return response.data.body.token; // Renvoie le token de la réponse
+        return { token: response.data.body.token } // Renvoie le token de la réponse
         // Si le token est présent dans redux redirigé vers la page user
     } catch (error) {
         // Si Renvoie un objet {"status": 400,"message": "Error: Password is invalid"} ou {"status": 400,"message": "Error: User not found!"}
@@ -34,5 +34,4 @@ export const postDataForSignIn = async (username, password) => {
     }
 
     //  "tony@stark.com", "password123"
-    // window.location.href = '/user';
 }

@@ -218,6 +218,12 @@ body {
   justify-content: flex-end;
 }
 
+.error_message {
+  margin-top: 10px;
+  color: #ff0000;
+  font-weight: 700;
+}
+
 .input-remember label {
   margin-left: 0.25rem;
 }

@@ -1,6 +1,6 @@
 export const postDataForProfile = (firstname, lastname) => {
-    let dataEditName = { "firstname": firstname, "lastname": lastname }
-    console.log(dataEditName)
+    // let dataEditName = { "firstname": firstname, "lastname": lastname }
+    // console.log(dataEditName)
 
     // Quand l'utilisateur clique sur le boutton class="edit-button" , le nom disparait et 2 input apparaissent pour les nom et prénom.
     // Récupérer le contenu de ces input et les mettre dans un objet.

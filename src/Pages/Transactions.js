@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AccountUser } from '../Components/AccountUser'
 import { postDataForProfile } from '../Service/EditName'
-
+import { HelloUser } from '../Components/HelloUser';
 export const Transactions = () => {
     const [isVisible, setIsVisible] = useState(true);
 
@@ -19,10 +19,9 @@ export const Transactions = () => {
     };
 
     const handleSubmit = (event) => {
+        // poste les nouveaux noms et prénoms et actualise les composants qui affiche les noms (banner et helloUser)
         event.preventDefault();
         postDataForProfile(firstname, lastname);
-        // Redirection vers la page signIn après la soumission
-        // window.location.href = '/signIn';
     };
     const handleCancel = (event) => {
         event.preventDefault();
@@ -32,7 +31,7 @@ export const Transactions = () => {
     return (
         <main className='main bg-light'>
             <div className="header">
-                <h1>Welcome back <br /><span className='userName'>Tony Jarvis!</span> </h1>
+                <HelloUser />
                 <button onClick={handleClick} className={isVisible ? 'edit-button' : 'edit-button-hided'}>Edit Name</button>
 
             </div>
