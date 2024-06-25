@@ -4,14 +4,14 @@ import { SignInInput } from './SignInInput'
 import { useNavigate } from 'react-router-dom'
 import { postDataForSignIn } from '../Service/LogIn'
 import { useSelector, useDispatch } from 'react-redux'
-import { setToken, clearToken } from '../test_redux_toolkit/counterSlice';
+import { setToken, clearToken } from '../test_redux_toolkit/dataUserSlice';
 
 export const SignInForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const token = useSelector((state) => state.counter.token)
+    const token = useSelector((state) => state.dataUser.token)
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -34,12 +34,12 @@ export const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const result = await postDataForSignIn(username, password);
-        // Redirection vers la page signIn après la soumission
-        // window.location.href = '/signIn';
+
         if (result.token) {
             console.log('Token received:', result.token);
             // Stocker le token dans redux et rediriger vers la page user.
             handleSetToken(result.token)
+            // Redirection vers la page signIn après la soumission
             navigate('/user');
             // Redirection ou mise à jour de l'état pour l'utilisateur connecté
         } else {

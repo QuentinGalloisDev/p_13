@@ -72,6 +72,9 @@ body {
   margin-right: 10px;
 }
 
+.main-nav-item .user_name {
+  margin-right: 5px;
+}
 
 .main-nav a.router-link-exact-active {
   color: #42b983;

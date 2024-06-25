@@ -1,26 +1,19 @@
-export const postDataForProfile = (firstname, lastname) => {
-    // let dataEditName = { "firstname": firstname, "lastname": lastname }
-    // console.log(dataEditName)
+import axios from "axios";
 
-    // Quand l'utilisateur clique sur le boutton class="edit-button" , le nom disparait et 2 input apparaissent pour les nom et prénom.
-    // Récupérer le contenu de ces input et les mettre dans un objet.
+export const postDataForEditName = async (firstname, lastname, token) => {
 
-    // Faire une requete Put, au clic sur le boutton save,avec dans le header le JWT Bearer et un objet : {"firstName": "string","lastName": "string"}
-    // Si réponse positive :
-    // {
-    //     "status": 0,
-    //     "message": "string",
-    //     "body": {
-    //       "id": "string",
-    //       "email": "string"
-    //     }
-    //   }
-    // alors on affiche un message provisoire dans le dom qui indique que les noms ont bien été changés, on enlève les input et on affiche le nouveau nom
-    // Donc le composant qui affiche le nom doit être abonné au redux qui contient le nom pour se mettre à jour dés que le nom change.
+    try {
+        const response = await axios.put('http://127.0.0.1:3001/api/v1/user/profile', {
+            "firstName": firstname, "lastName": lastname
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
 
-
-
-    // Si l'utilisateur clique sur le boutton cancel, les input disparraissent et le nom réaparait.
-
-    //
+        });
+        console.log({ firstName: response.data.body.firstName, lastName: response.data.body.lastName })
+        return { firstName: response.data.body.firstName, lastName: response.data.body.lastName }
+    } catch (error) {
+        console.log('Error posting data:', error);
+    }
 }
