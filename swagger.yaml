@@ -278,17 +278,6 @@ definitions:
   TransactionsDetails:
     type: object
     properties:
-      id:
-        type: string
-      date:
-        type: string
-        format: date
-      description:
-        type: string
-      amount:
-        $ref: '#/definitions/Amount'
-      balance:
-        type: integer 
       transactionType:
         type: string
       category:
