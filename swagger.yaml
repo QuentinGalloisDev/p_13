@@ -114,7 +114,7 @@ paths:
         '500':
           description: Internal Server Error
           
-  /user/transactions:
+  /user/{accountId}/transactions:
     get:
       security:
         - Bearer: []
@@ -122,6 +122,17 @@ paths:
         - User Module
       summary: UserTransactions API
       description: API for fetching user transactions for the current month
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: aze
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
       produces:
         - application/json
       responses:
@@ -130,9 +141,13 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Transactions'
+              $ref: '#/definitions/Transactions' 
         '400':
           description: Invalid Fields
+        '401':
+          description: Token not found in the header
+        '403':
+          description: Access denied
         '500':
           description: Internal Server Error
   /user/transactions/{transactionId}:
@@ -163,6 +178,12 @@ paths:
               $ref: '#/definitions/TransactionsDetails'
         '400':
           description: Invalid Fields
+        '401':
+          description: Token not found in the header
+        '403':
+          description: Access denied
+        '404':
+          description: Transaction not found
         '500':
           description: Internal Server Error    
   /user/{transactionId}:
@@ -176,7 +197,7 @@ paths:
       parameters:
         - name: transactionId
           in: path
-          required: true
+          required: true 
           type: string
           description: The transaction to partially modified
         - in: header
@@ -191,17 +212,21 @@ paths:
           schema:
             type: object
             properties:
-              amount:
-                type: integer
+              note:
+                type: string
       produces:
         - application/json
       responses:
         '200':
           description: Transactions modified successully
           schema:
-            $ref: '#/definitions/Transactions'
+            $ref: '#/definitions/TransactionsDetails'
         '400':
           description: Invalid Fields
+        '401':
+          description: Token not found in the header
+        '403':
+          description: Access denied
         '500':
           description: Internal Server Error        
           
@@ -211,8 +236,6 @@ securityDefinitions:
     name: Authorization
     in: header
 definitions:
-  Amount:
-    type: integer
   User:
     properties:
       email:
@@ -272,12 +295,23 @@ definitions:
       description:
         type: string
       amount:
-        $ref: '#/definitions/Amount'
+        type: integer
       balance:
         type: integer 
   TransactionsDetails:
     type: object
     properties:
+      id:
+        type: string
+      date:
+        type: string
+        format: date
+      description:
+        type: string
+      amount:
+        type: integer
+      balance:
+        type: integer 
       transactionType:
         type: string
       category:
@@ -285,5 +319,4 @@ definitions:
       notes:
         type: string
 
-    
         
