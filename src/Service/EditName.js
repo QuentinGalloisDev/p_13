@@ -11,7 +11,6 @@ export const postDataForEditName = async (firstname, lastname, token) => {
             }
 
         });
-        console.log({ firstName: response.data.body.firstName, lastName: response.data.body.lastName })
         return { firstName: response.data.body.firstName, lastName: response.data.body.lastName }
     } catch (error) {
         console.log('Error posting data:', error);

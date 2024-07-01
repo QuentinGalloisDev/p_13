@@ -1,7 +1,7 @@
 import './App.css';
 import { Home } from './Pages/Home';
 import { SignIn } from './Pages/SignIn';
-import { UserProfile } from './Pages/UserProfile'
+import { UserProfile } from './Pages/userProfile';
 import { Error } from './Pages/Error';
 import { Banner } from './Components/Banner';
 import { Footer } from './Components/Footer';

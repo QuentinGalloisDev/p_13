@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AccountUser } from '../Components/AccountUser'
 import { postDataForEditName } from '../Service/EditName'
 import { HelloUser } from '../Components/HelloUser';
 import { useSelector, useDispatch } from 'react-redux'
 import { setUserFirstName, setUserLastName } from '../test_redux_toolkit/dataUserSlice';
+import { useNavigate } from 'react-router-dom'
 
 export const UserProfile = () => {
     const token = useSelector((state) => state.dataUser.token)
+    const navigate = useNavigate();
+
     const dispatch = useDispatch()
+    useEffect(() => {
+        if (!token) {
+            navigate('/error');
+        }
+    }, [token, navigate]);
+
 
     const handleSetUserFirstName = (userFirstName) => {
         dispatch(setUserFirstName(userFirstName))
@@ -22,6 +31,13 @@ export const UserProfile = () => {
     const [firstname, setfirstname] = useState('');
     const [lastname, setlastname] = useState('');
 
+    function onlyLetters(str) {
+        // Regex to detect anything other than letters
+        const regex = /[^a-zA-ZéèçÀàù^']/;
+        // Return false if the regex matches (indicating presence of non-letter characters)
+        return !regex.test(str);
+    }
+
     const handlefirstnameChange = (event) => {
         setfirstname(event.target.value);
     };
@@ -31,17 +47,22 @@ export const UserProfile = () => {
     };
 
     const handleSubmit = async (event) => {
-        // poste les nouveaux noms et prénoms et actualise les composants qui affiche les noms (banner et helloUser)
+        // post the new lastname & firstname & update the copmo that shows the names (banner and helloUser)
         event.preventDefault();
-        const result = await postDataForEditName(firstname, lastname, token);
-
+        let result = null
+        if (onlyLetters(firstname) && onlyLetters(lastname)) {
+            result = await postDataForEditName(firstname, lastname, token);
+        }
+        else {
+            result = null
+        }
         if (result) {
-            // Stocker le nom dans redux et rediriger vers la page user.
+            // Store the data in redux
             handleSetUserFirstName(result.firstName)
             handleSetUserLastName(result.lastName)
-            // Mise à jour de l'état pour l'utilisateur connecté
         }
     };
+    //Hide the input form on click
     const handleCancel = (event) => {
         event.preventDefault();
         setIsVisible(true);
@@ -59,11 +80,13 @@ export const UserProfile = () => {
                         <label>FirstName</label>
                         <input id='firstname' type='text' className={isVisible ? 'edit-input-hided' : 'edit-input'} value={firstname}
                             onChange={handlefirstnameChange}></input>
+                        <span className={onlyLetters(firstname) ? 'error_message_input_hided' : 'error_message_input'}>firstname unauthorized</span>
                     </div>
                     <div className='lastNameInput'>
                         <label>LastName</label>
                         <input id='lastname' type='text' className={isVisible ? 'edit-input-hided' : 'edit-input'} value={lastname}
                             onChange={handlelastnameChange}></input>
+                        <span className={onlyLetters(lastname) ? 'error_message_input_hided' : 'error_message_input'}>lastname unauthorized</span>
                     </div>
                 </div>
 

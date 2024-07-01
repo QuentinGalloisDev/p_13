@@ -337,8 +337,28 @@ body {
   padding: 5px;
 }
 
+.error_message_input {
+  color: #ff0000;
+}
+
+.error_message_input_hided {
+  display: none;
+}
+
 .editUserNameFormHided {
   display: none;
+}
+
+.page_not_found {
+  display: flex;
+  flex-direction: column;
+  color: #ff0000;
+  font-size: 25px;
+  height: 100%;
+}
+
+.back_home {
+  margin: 15px 0px;
 }
 
 .buttons {
@@ -349,11 +369,11 @@ body {
 }
 
 .editUserNameForm .buttons button {
-  padding: 5px;
+  padding: 3px;
   font-size: 1rem;
   font-weight: bold;
   color: #7b70f6;
-  width: 40%;
+  min-width: 40%;
   border-color: #bebef2;
   border-style: inset;
 }
@@ -390,5 +410,11 @@ body {
 
   .transaction-button {
     width: 200px;
+  }
+}
+
+@media (max-width: 720px) {
+  .editUserNameForm {
+    width: 60%;
   }
 }
