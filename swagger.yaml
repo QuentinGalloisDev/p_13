@@ -316,7 +316,7 @@ definitions:
         type: string
       category:
         type: string
-      notes:
+      note:
         type: string
 
         
