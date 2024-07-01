@@ -3,7 +3,7 @@ export const postDataForSignIn = async (username, password) => {
     // Envoyer les données de connexion
     // Faire une requete post avec un objet au format : {"email": "firstname@lastname.com", "password": "password123"}
     try {
-        // Si requete valide :
+        // Si requete valide : 
         // {
         //     "status": 200,
         //     "message": "User successfully logged in",

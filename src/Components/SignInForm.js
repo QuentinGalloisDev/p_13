@@ -4,7 +4,7 @@ import { SignInInput } from './SignInInput'
 import { useNavigate } from 'react-router-dom'
 import { postDataForSignIn } from '../Service/LogIn'
 import { useSelector, useDispatch } from 'react-redux'
-import { setToken, clearToken } from '../test_redux_toolkit/dataUserSlice';
+import { setToken, clearToken } from '../redux_toolkit/dataUserSlice';
 
 export const SignInForm = () => {
     const [username, setUsername] = useState('');
@@ -39,9 +39,8 @@ export const SignInForm = () => {
             console.log('Token received:', result.token);
             // Stocker le token dans redux et rediriger vers la page user.
             handleSetToken(result.token)
-            // Redirection vers la page signIn après la soumission
+            // Redirection vers la page utilisateur
             navigate('/user');
-            // Redirection ou mise à jour de l'état pour l'utilisateur connecté
         } else {
             setErrorMessage(result.error); // Met à jour l'état avec le message d'erreur
             handleClearToken()

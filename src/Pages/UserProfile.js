@@ -3,7 +3,7 @@ import { AccountUser } from '../Components/AccountUser'
 import { postDataForEditName } from '../Service/EditName'
 import { HelloUser } from '../Components/HelloUser';
 import { useSelector, useDispatch } from 'react-redux'
-import { setUserFirstName, setUserLastName } from '../test_redux_toolkit/dataUserSlice';
+import { setUserFirstName, setUserLastName } from '../redux_toolkit/dataUserSlice';
 import { useNavigate } from 'react-router-dom'
 
 export const UserProfile = () => {

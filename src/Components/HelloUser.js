@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { postDataForUser } from '../Service/postDataForUser';
-import { setUserFirstName, setUserLastName } from '../test_redux_toolkit/dataUserSlice';
+import { setUserFirstName, setUserLastName } from '../redux_toolkit/dataUserSlice';
 
 export const HelloUser = () => {
 

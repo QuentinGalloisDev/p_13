@@ -3,7 +3,7 @@ import Logo from '../images/argentBankLogo.png'
 import SignInIcon from '../images/accountCircle.png'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { clearToken } from '../test_redux_toolkit/dataUserSlice';
+import { clearToken } from '../redux_toolkit/dataUserSlice';
 
 export const Banner = () => {
     const token = useSelector((state) => state.dataUser.token)

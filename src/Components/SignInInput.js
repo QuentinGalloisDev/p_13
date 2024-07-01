@@ -12,7 +12,3 @@ export const SignInInput = ({ inputClassName, inputLabel, inputType, value, onCh
         </div>
     );
 };
-
-// inputClassName = input-wrapper
-// inputLabel = username
-// inputType = text

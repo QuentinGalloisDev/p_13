@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-
     token: "",
     firstName: "",
     lastName: "",
@@ -28,6 +27,5 @@ export const dataUserSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setToken, clearToken, setUserFirstName, setUserLastName } = dataUserSlice.actions
-// export const { logIn, logOut } = tokenSlice.actions
 
 export default dataUserSlice.reducer
